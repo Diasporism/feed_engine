@@ -1,0 +1,71 @@
+
+
+
+table[Attributes Style] {
+  border-top-width: 0px;
+  border-right-width: 0px;
+  border-bottom-width: 0px;
+  border-left-width: 0px;
+  border-spacing: 0px;
+  width: 85%;
+  background-color: rgb(246, 246, 239);
+}
+table {
+  white-space: normal;
+  line-height: normal;
+  font-weight: normal;
+  font-size: medium;
+  font-variant: normal;
+  font-style: normal;
+  color: -webkit-text;
+  text-align: start;
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: gray;
+  font-family: Verdana;
+  background-color: rgb(246, 246, 239);
+}
+
+tr {
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+
+tr.header {
+  background-color: rgb(255, 102, 0);
+  border-spacing: 0px;
+  border-color: rgb(255, 102, 0);
+
+}
+
+td {
+  font-family: Verdana;
+  font-size: 10pt;
+  color: #828282;
+}
+
+td, th {
+  display: table-cell;
+  vertical-align: inherit;
+}
+
+element.style {
+  width: 18px;
+  padding-right: 4px;
+}
+
+table.side_menu {
+  float: left;
+  margin-right: 10px;
+}
+
+table.main {
+  float: left;
+}
+
+h2 {
+  border: 2px solid;
+  border-: 50px;
+}
