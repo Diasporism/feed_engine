@@ -37,7 +37,6 @@ tr.header {
   background-color: rgb(255, 102, 0);
   border-spacing: 0px;
   border-color: rgb(255, 102, 0);
-
 }
 
 td {
@@ -49,6 +48,7 @@ td {
 td, th {
   display: table-cell;
   vertical-align: inherit;
+  border: 1px solid white;
 }
 
 element.style {
@@ -58,14 +58,21 @@ element.style {
 
 table.side_menu {
   float: left;
-  margin-right: 10px;
+  margin: 10px;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border: 2px solid gray;
+  line-height: 15px;
+  padding: 5px;
 }
 
 table.main {
   float: left;
+  margin: 10px;
+
 }
 
 h2 {
   border: 2px solid;
-  border-: 50px;
+  margin-left: 10px;
 }
