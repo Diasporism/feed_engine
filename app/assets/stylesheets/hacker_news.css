@@ -1,6 +1,3 @@
-
-
-
 table[Attributes Style] {
   border-top-width: 0px;
   border-right-width: 0px;
@@ -73,6 +70,7 @@ table.main {
 }
 
 h2 {
+  text-align: center;
   border: 2px solid;
   margin-left: 10px;
 }
