@@ -1,6 +1,6 @@
 FeedEngine::Application.routes.draw do
+  root to: 'platform#index'
 
-  get '/' => "home#show"
-
-
+  match '/auth/:provider/callback', to: 'sessions#create'
+  match '/signout', to: 'sessions#destroy', as: 'signout'
 end

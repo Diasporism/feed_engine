@@ -11,6 +11,11 @@
  *= require_self
  *= require_tree .
  */
+.twitter-img img {
+    position: relative;
+    float: left;
+}
+
 .content {
   background-color: #eee;
   padding: 20px;
