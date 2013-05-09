@@ -11,3 +11,12 @@
  *= require_self
  *= require_tree .
  */
+
+.twitter-img img {
+    position: relative;
+    float: left;
+}
+
+.container {
+    float: left;
+}

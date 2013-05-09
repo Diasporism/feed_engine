@@ -1,0 +1,21 @@
+- if current_user
+  Signed in as #{current_user.name}!
+  = link_to "Sign out", signout_path
+- else
+  = link_to "Sign in with Twitter", "/auth/twitter"
+
+.br
+  = @timeline.first.inspect
+
+=============
+
+.br
+  - @timeline.each do |tweet|
+    .container
+      .twitter-img
+        = image_tag tweet[:user][:profile_image_url_https]
+        = "From: #{tweet[:user][:screen_name]}"
+        .br
+        = auto_link(tweet[:text], :html => { :target => '_blank' })
+      .br
+        =============
