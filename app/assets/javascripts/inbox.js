@@ -11,24 +11,23 @@ $(document).ready(function(){
       var shortened = content.substr(0, showChar);
       var more_content = content.substr(showChar, content.length - showChar);
 
-      var html = shortened + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + more_content + '</span>&nbsp;&nbsp;<a href="" class="toggle_content">' + lesstext + '</a></span>';
-      // var test = shortened + '</span>&nbsp;&nbsp;<a href="" class="toggle_content">' + moretext + '</a></span>';
+      var html = shortened + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + more_content + '</span>&nbsp;&nbsp;</span><a href="" class="toggle_content">' + moretext + '</a>';
 
       $(this).html(html);
-      // $('this').prev().toggle();
+      $('.morecontent').hide();
     }
   });
 
   $(".toggle_content").click(function(){
     if($(this).hasClass("less")) {
-        $(this).removeClass("less");
-        $(this).html(lesstext);
+      $(this).removeClass("less");
+      $(this).html(moretext);
     } else {
-        $(this).addClass("less");
-        $(this).html(moretext);
+      $(this).addClass("less");
+      $(this).html(lesstext);
     }
-    $(this).parent().prev().toggle(); //elipse toggle
-    $(this).prev().toggle();      //morecontent toggle
+    $(this).prev().prev().toggle(); //elipse toggle
+    $(this).prev().toggle();        //morecontent toggle
     return false;
   });
 });
