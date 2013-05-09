@@ -1,21 +1,34 @@
-- if current_user
-  Signed in as #{current_user.name}!
-  = link_to "Sign out", signout_path
-- else
-  = link_to "Sign in with Twitter", "/auth/twitter"
+.row-fluid
+  .span3
 
-.br
-  = @timeline.first.inspect
 
-=============
+.row-fluid
+  .span12
+    .span2
+      %table.side_menu
+        %tr
+          %td Inbox
+        %tr
+          %td Gmail
+        %tr
+          %td Facebook
+        %tr
+          %td Twitter
+    .span10
+      %table.main
+        %tr.header
+          %th Sender
+          %th Message
+          %th Date/Time
+        - @timeline.each do |tweet|
+          %tr
+            %td
+              = tweet[:user][:screen_name]
+              .br
+              = image_tag tweet[:user][:profile_image_url_https]
+            %td
+              = auto_link(tweet[:text], :html => { :target => '_blank' })
+            %td
+              = tweet[:created_at]
 
-.br
-  - @timeline.each do |tweet|
-    .container
-      .twitter-img
-        = image_tag tweet[:user][:profile_image_url_https]
-        = "From: #{tweet[:user][:screen_name]}"
-        .br
-        = auto_link(tweet[:text], :html => { :target => '_blank' })
-      .br
-        =============
+
