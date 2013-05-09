@@ -3,13 +3,16 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'sqlite3'
 gem 'rspec-rails'
+
 gem 'rest-client'
-gem 'haml-rails', '= 0.3.4'
 gem 'figaro'
 gem 'twitter'
 #gem 'tweetstream'
 gem 'omniauth-twitter'
 gem 'rails_autolink'
+gem 'haml-rails'
+gem 'bootstrap-sass'
+gem 'simple_form'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -21,6 +24,10 @@ group :development do
   gem 'unicorn'
   gem 'better_errors'
   gem 'binding_of_caller'
+end
+
+group :test do
+  gem 'capybara'
 end
 
 gem 'jquery-rails'

@@ -1,0 +1,27 @@
+:javascript
+  (function() {
+     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+     po.src = 'https://apis.google.com/js/client:plusone.js';
+     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+
+.row-fluid
+  .span3 
+    %h2 THE INBOX
+  .span3#signinButton#login
+    %span.g-signin{"data-callback" => "signinCallback", "data-clientid" => "CLIENT_ID", "data-cookiepolicy" => "single_host_origin", "data-requestvisibleactions" => "http://schemas.google.com/AddActivity", "data-scope" => "https://www.googleapis.com/auth/plus.login"}
+
+/ = link_to "Home", 'root_path', :class => 'brand'
+/ %ul.nav
+/   - if user_signed_in?
+/     %li
+/       = link_to('Logout', destroy_user_session_path, :method=>'delete')
+/   - else
+/     %li
+/       = link_to('Login', new_user_session_path)
+/   - if user_signed_in?
+/     %li
+/       = link_to('Edit account', edit_user_registration_path)
+/   - else
+/     %li
+/       = link_to('Sign up', new_user_registration_path)
