@@ -12,10 +12,10 @@ $(document).ready(function(){
       var more_content = content.substr(showChar, content.length - showChar);
 
       var html = shortened + '<span class="moreellipses">' + ellipsestext + '&nbsp;</span><span class="morecontent"><span>' + more_content + '</span>&nbsp;&nbsp;<a href="" class="toggle_content">' + lesstext + '</a></span>';
-      var test = shortened + '</span>&nbsp;&nbsp;<a href="" class="toggle_content">' + moretext + '</a></span>';
+      // var test = shortened + '</span>&nbsp;&nbsp;<a href="" class="toggle_content">' + moretext + '</a></span>';
 
       $(this).html(html);
-      $('this').prev().toggle();
+      // $('this').prev().toggle();
     }
   });
 
