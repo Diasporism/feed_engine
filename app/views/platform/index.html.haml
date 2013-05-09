@@ -20,15 +20,16 @@
           %th Sender
           %th Message
           %th Date/Time
-        - @timeline.each do |tweet|
-          %tr
-            %td
-              = tweet[:user][:screen_name]
-              .br
-              = image_tag tweet[:user][:profile_image_url_https]
-            %td
-              = auto_link(tweet[:text], :html => { :target => '_blank' })
-            %td
-              = tweet[:created_at]
+        - if @timeline != nil
+          - @timeline.each do |tweet|
+            %tr
+              %td
+                = tweet[:user][:screen_name]
+                .br
+                = image_tag tweet[:user][:profile_image_url_https]
+              %td
+                = auto_link(tweet[:text], :html => { :target => '_blank' })
+              %td
+                = tweet[:created_at]
 
 
