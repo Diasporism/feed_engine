@@ -1,4 +1,7 @@
-
+#login {
+  margin: 11px;
+  float: right;
+}
 
 
 table[Attributes Style] {
@@ -75,4 +78,5 @@ table.main {
 h2 {
   border: 2px solid;
   margin-left: 10px;
+  text-align: center;
 }
