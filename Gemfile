@@ -9,6 +9,7 @@ gem 'figaro'
 gem 'twitter'
 #gem 'tweetstream'
 gem 'omniauth-twitter'
+gem "omniauth-google-oauth2"
 gem 'rails_autolink'
 gem 'haml-rails'
 gem 'bootstrap-sass'
