@@ -14,6 +14,8 @@ gem 'rails_autolink'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
+gem 'gmail'
+gem 'gmail_xoauth'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

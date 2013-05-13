@@ -15,7 +15,7 @@
   .span3 
     %h2 THE INBOX
   .span3#signinButton#login
-    %span.g-signin{"data-callback" => "signinCallback", "data-clientid" => ENV['GOOGLE_KEY'], "data-cookiepolicy" => "single_host_origin", "data-requestvisibleactions" => "http://schemas.google.com/AddActivity", "data-scope" => "https://mail.google.com/mail/feed/atom/"}
+    %span.g-signin{"data-callback" => "signinCallback", "data-clientid" => ENV['GOOGLE_KEY'], "data-cookiepolicy" => "single_host_origin", "data-requestvisibleactions" => "http://schemas.google.com/AddActivity", "data-scope" => "https://www.googleapis.com/auth/plus.login"}
 
 / = link_to "Home", 'root_path', :class => 'brand'
 / %ul.nav
