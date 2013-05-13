@@ -15,13 +15,13 @@
           %td Facebook
         %tr
           %td Twitter
-    .span10
-      %table.main
-        %tr.header
-          %th Sender
-          %th Message
-          %th Date/Time
-        - if @timeline != nil
+    - if current_user
+      .span10
+        %table.main
+          %tr.header
+            %th Sender
+            %th Message
+            %th Date/Time
           - @timeline.each do |tweet|
             %tr
               %td

@@ -12,4 +12,8 @@ class PlatformController < ApplicationController
     end
   end
 
+  def splash
+    render :layout => false
+  end
+
 end
