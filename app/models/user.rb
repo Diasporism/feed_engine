@@ -11,5 +11,4 @@ class User < ActiveRecord::Base
       user.name = auth["info"]["nickname"]
     end
   end
-
 end

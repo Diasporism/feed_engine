@@ -14,6 +14,5 @@ class SessionsController < ApplicationController
     session[:oauth_token] = nil
     redirect_to root_url, notice: "Signed out!"
   end
-
 end
 

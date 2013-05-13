@@ -2,6 +2,13 @@ ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
+require 'capybara'
+require 'capybara/mechanize'
+require 'vcr'
+# require 'capybara/rspec'
+
+# HTTPI.log = false
+# Savon.log = false
 
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
