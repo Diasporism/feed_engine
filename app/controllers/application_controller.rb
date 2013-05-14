@@ -6,4 +6,12 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def require_login
+    if current_user
+      true
+    else
+      redirect_to splash_path
+    end
+  end
+
 end
