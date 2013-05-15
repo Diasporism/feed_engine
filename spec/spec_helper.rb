@@ -5,6 +5,7 @@ require 'rspec/autorun'
 require 'capybara'
 require 'capybara/mechanize'
 require 'vcr'
+require 'factory_girl_rails'
 # require 'capybara/rspec'
 
 # HTTPI.log = false
