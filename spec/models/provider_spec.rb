@@ -40,14 +40,41 @@ describe Provider do
 
     }}
 
-  context "when correct paramaters are given" do 
+  describe ".create" do 
 
-    it "creates a new provider object" do 
-      Provider.create(user: user, name: oauth_info[:info][:name], uid: oauth_info[:uid], token: oauth_info[:credentials][:token])
-      expect(Provider.count).to eq 1
+    context "when correct paramaters are given" do 
+
+      before do 
+        Provider.create(user: user, name: oauth_info[:info][:name], uid: oauth_info[:uid], token: oauth_info[:credentials][:token])
+      end
+
+      it "creates a new provider object" do 
+        expect(Provider.count).to eq 1
+      end
+
+      it "links that provider to its user" do 
+        expect(Provider.first.user).to eq user
+      end
     end
 
-    it "links that provider to its user" do 
+    context "when incorrect paramaters are given" do
+
+      it "does not save the provider" do 
+      end 
     end
+  end
+
+  describe ".construct" do
+
+    context "when a provider passes in the entire oath params" do 
+
+      before do 
+        Provider.construct(user, oauth_info)
+      end
+
+      it "creates a new provider" do
+        expect(Provider.count).to eq 1 
+      end
+    end 
   end
 end
