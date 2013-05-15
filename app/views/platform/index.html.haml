@@ -15,25 +15,6 @@
           %td Facebook
         %tr
           %td Twitter
-<<<<<<< HEAD
-    - if current_user
-      .span10
-        %table.main
-          %tr.header
-            %th Sender
-            %th Message
-            %th Date/Time
-          - @timeline.each do |tweet|
-            %tr
-              %td
-                = tweet[:user][:screen_name]
-                .br
-                = image_tag tweet[:user][:profile_image_url_https]
-              %td
-                = auto_link(tweet[:text], :html => { :target => '_blank' })
-              %td
-                = tweet[:created_at]
-=======
   -if @timeline
     .span10
       %table.main
@@ -51,6 +32,6 @@
               = auto_link(tweet[:text], :html => { :target => '_blank' })
             %td
               = tweet[:created_at]
->>>>>>> 7b946f4ccbcf9ad275fdd41fc0c77794b6d48803
+
 
 

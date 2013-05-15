@@ -50,6 +50,7 @@ describe Provider do
 
       it "creates a new provider object" do 
         expect(Provider.count).to eq 1
+        expect(Provider.first.name).to eq "John Doe"
       end
 
       it "links that provider to its user" do 
