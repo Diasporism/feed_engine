@@ -11,4 +11,22 @@ class Provider < ActiveRecord::Base
       token = oauth_info[:credentials][:token]
     end
   end
+
+  def self.email(user, auth_hash)
+
+    access_token = auth_hash[:credentials][:token]
+
+    imap = Net::IMAP.new('imap.gmail.com', 993, usessl = true, certs = nil, verify = false)
+    imap.authenticate('XOAUTH2', user.email, access_token)
+    imap.select('INBOX')
+    imap.search(['ALL']).each do |message_id|
+
+      msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
+      mail = Mail.read_from_string msg
+
+      puts mail.subject
+      puts mail.text_part.body.to_s
+      puts mail.html_part.body.to_s
+    end
+  end
 end

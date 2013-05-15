@@ -13,6 +13,8 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'certified'
+gem 'gmail_xoauth'
+gem 'gmail'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

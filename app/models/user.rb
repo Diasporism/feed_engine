@@ -12,5 +12,4 @@ class User < ActiveRecord::Base
     user_email = auth[:info][:email]
     User.find_by_email(user_email) || User.create!(email: user_email)
   end
-
 end
