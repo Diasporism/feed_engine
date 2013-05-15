@@ -3,11 +3,9 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.13'
 gem 'sqlite3'
 gem 'rspec-rails'
-
 gem 'rest-client'
 gem 'figaro'
 gem 'twitter'
-#gem 'tweetstream'
 gem 'omniauth-twitter'
 gem "omniauth-google-oauth2"
 gem 'rails_autolink'
@@ -30,6 +28,9 @@ end
 
 group :test do
   gem 'capybara'
+  gem 'vcr'
+  gem 'fakeweb'
+  gem 'capybara-mechanize'
 end
 
 gem 'jquery-rails'

@@ -18,7 +18,7 @@ $(document).ready(function(){
     }
   });
 
-  $(".toggle_content").click(function(){
+  $(".toggle_content").click(function() {
     if($(this).hasClass("less")) {
       $(this).removeClass("less");
       $(this).html(moretext);
@@ -26,8 +26,8 @@ $(document).ready(function(){
       $(this).addClass("less");
       $(this).html(lesstext);
     }
-    $(this).prev().prev().toggle(); //elipse toggle
-    $(this).prev().toggle();        //morecontent toggle
+    $(this).prev().prev().toggle();            //elipse toggle
+    $(this).prev().toggle('slow');        //morecontent toggle
     return false;
   });
 });

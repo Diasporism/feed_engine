@@ -16,5 +16,4 @@ class PlatformController < ApplicationController
     @params = params
     render :layout => false
   end
-
 end

@@ -8,5 +8,4 @@ class TwitterClient
         :oauth_token_secret => secret
     )
   end
-
 end
