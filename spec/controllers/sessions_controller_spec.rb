@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe SessionsController do
-
   context 'When a user is not logged in' do
     context 'and they authenticate with Google' do
 
@@ -10,7 +9,6 @@ describe SessionsController do
       let(:google_last_name) { 'Test' }
       let(:google_provider_name) { 'google_oauth2' }
       let(:google_uid) { '103933682950854620224' }
-
       let(:google_omniauth_env) do
         {
             'provider' => google_provider_name,
@@ -28,22 +26,11 @@ describe SessionsController do
         }
       end
 
-
-
       it 'creates a user account' do
         @request.env['omniauth.auth'] = google_omniauth_env
         post :create
         user = User.find_by_email(google_email)
         expect(user.email).to eq google_email
-      end
-
-      it 'the user account has a google provider' do
-        @request.env['omniauth.auth'] = google_omniauth_env
-        post :create
-        user = User.find_by_email(google_email)
-        provider = user.providers.first
-        expect(provider.name).to eq google_provider_name
-        expect(provider.uid).to eq google_uid
       end
 
       it 'the user is logged in' do
@@ -53,7 +40,6 @@ describe SessionsController do
         expect(user).to be
         expect(controller.current_user).to eq user
       end
-
 
       context 'when the user already has already has an account' do
         it 'two users are not created' do
