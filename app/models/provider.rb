@@ -5,18 +5,19 @@ class Provider < ActiveRecord::Base
 
   def self.construct(user, oauth_info)
     create! do |provider|
-      user = user
-      name = oauth_info[:info][:name] 
-      uid = oauth_info[:uid]
-      token = oauth_info[:credentials][:token]
+      provider.user = user
+      provider.name = oauth_info[:info][:name] 
+      provider.uid = oauth_info[:uid]
+      provider.token = oauth_info[:credentials][:token]
     end
   end
 
-  def self.email(user, auth_hash)
+  def self.email(user, auth)
 
-    access_token = auth_hash[:credentials][:token]
+    access_token = auth[:credentials][:token]
 
     imap = Net::IMAP.new('imap.gmail.com', 993, usessl = true, certs = nil, verify = false)
+    # raise "user #{user.email}, #{access_token}"
     imap.authenticate('XOAUTH2', user.email, access_token)
     imap.select('INBOX')
     imap.search(['ALL']).each do |message_id|
