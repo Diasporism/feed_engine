@@ -7,7 +7,7 @@ gem 'rest-client'
 gem 'figaro'
 gem 'twitter'
 gem 'omniauth-twitter'
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 gem 'rails_autolink'
 gem 'haml-rails'
 gem 'bootstrap-sass'
@@ -16,6 +16,8 @@ gem 'certified'
 gem 'gmail_xoauth'
 gem 'gmail'
 gem 'sorcery'
+gem 'resque'
+gem 'redis'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

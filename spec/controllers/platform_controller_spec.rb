@@ -22,7 +22,9 @@ describe PlatformController do
     context 'When the current user is logged in' do
       context 'but has not added any providers to their feed' do
         it 'a gmail client is created' do
+
           controller.auto_login(user_3)
+
           get :index
           response.response_code.should == 200
         end
@@ -39,10 +41,6 @@ describe PlatformController do
           get :index
           response.response_code.should == 200
         end
-      end
-
-      context 'and has added Facebook to their feed' do
-        it 'a Facebook client is created'
       end
     end
   end
