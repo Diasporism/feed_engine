@@ -16,6 +16,14 @@ class User < ActiveRecord::Base
     self.providers.where(name: provider).first.secret
   end
 
+  def create_imap_client
+    begin 
+      Net::IMAP.new('imap.gmail.com', 993, usessl = true, certs = nil, verify = false)
+    rescue
+      nil
+    end
+  end 
+
   def create_twitter_client
     begin
       Twitter::Client.new(

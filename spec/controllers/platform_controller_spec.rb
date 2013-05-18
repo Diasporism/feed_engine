@@ -23,6 +23,11 @@ describe PlatformController do
       end
 
       context 'and has added Twitter to their feed' do
+
+        before do 
+          Provider.stub(:get_email).and_return(true)
+        end
+
         it 'a Twitter client is created' do
           controller.auto_login(user2)
           get :index

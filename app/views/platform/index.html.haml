@@ -13,12 +13,12 @@
           %td Facebook
         %tr
           %td Twitter
-  - if @email
+  - if @emails
     .span10
       %table.mail
       %tr.header
         %th email
-      - @email.each do |email|
+      - @emails.each do |email|
         %tr
           %td
             = email.inspect

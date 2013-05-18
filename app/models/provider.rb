@@ -19,13 +19,10 @@ class Provider < ActiveRecord::Base
     end
   end
 
-  def email(user)
+  def self.get_email(imap, user)
 
-    access_token = token
+    imap.authenticate('XOAUTH2', user.email, user.token('google_oauth2'))
 
-    imap = Net::IMAP.new('imap.gmail.com', 993, usessl = true, certs = nil, verify = false)
-
-    imap.authenticate('XOAUTH2', user.email, access_token)
     imap.select('INBOX')
     my_mail = []
     imap.search(['ALL']).each do |message_id|
