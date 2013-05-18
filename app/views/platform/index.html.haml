@@ -15,7 +15,17 @@
           %td Facebook
         %tr
           %td Twitter
-  - @email
+  - if @email
+    .span10
+      %table.mail
+      %tr.header
+        %th email
+      - @email.each do |email|
+        %tr
+          %td
+            = email.inspect
+          %td
+            hello
   -if @timeline
     .span10
       %table.main
