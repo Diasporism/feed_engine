@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe SessionsController do
+
   context 'When a user is not logged in' do
     context 'and they authenticate with Google' do
 
@@ -10,7 +11,7 @@ describe SessionsController do
       let(:google_provider_name) { 'google_oauth2' }
       let(:google_uid) { '103933682950854620224' }
       let(:google_omniauth_env) do
-        {
+        { 
             'provider' => google_provider_name,
             'uid' => google_uid,
             'info' => {
@@ -23,7 +24,7 @@ describe SessionsController do
                 'token' => 'ya29.AHES6ZSZ4i8z2BWHfRf4mJiuuq0QPy98R9JWjugOB2tyWYo',
                 'refresh_token' => '1/GolcbSvsZqN8qz6mJFDvLY7VpioIo6uyUZRL4DAs22s'
             }
-        }
+        } 
       end
 
       it 'creates a user account' do
@@ -42,6 +43,7 @@ describe SessionsController do
       end
 
       context 'when the user already has already has an account' do
+
         it 'two users are not created' do
           @request.env['omniauth.auth'] = google_omniauth_env
           post :create

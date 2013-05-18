@@ -25,7 +25,6 @@ end
 
 group :development do
   gem 'unicorn'
-  gem 'factory_girl_rails'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
@@ -36,6 +35,7 @@ group :test do
   gem 'fakeweb'
   gem 'capybara-mechanize'
   gem 'simplecov', :require => false, :group => :test
+  gem 'factory_girl_rails'
 end
 
 gem 'jquery-rails'

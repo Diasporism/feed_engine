@@ -3,8 +3,6 @@ class User < ActiveRecord::Base
 
   attr_accessible :email
 
-  attr_accessible :email
-
   has_many :providers
 
   validates_uniqueness_of :email

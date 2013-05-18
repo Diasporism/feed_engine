@@ -1,6 +1,6 @@
 class Provider < ActiveRecord::Base
 
-  attr_accessible :name, :uid, :token, :secret
+  attr_accessible :name, :uid, :token, :secret, :user
 
   belongs_to :user
 
@@ -13,9 +13,9 @@ class Provider < ActiveRecord::Base
   def self.construct(user, oauth_info)
     create! do |provider|
       provider.user = user
-      provider.name = oauth_info[:info][:name] 
-      provider.uid = oauth_info[:uid]
-      provider.token = oauth_info[:credentials][:token]
+      provider.name = oauth_info['info']['name'] 
+      provider.uid = oauth_info['uid']
+      provider.token = oauth_info['credentials']['token']
     end
   end
 

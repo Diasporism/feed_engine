@@ -35,4 +35,3 @@ describe User do
     end
   end
 end
->>>>>>> db1dbce0d165f115ef267201a7e8c326b70a4dd4
