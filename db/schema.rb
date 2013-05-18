@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514202952) do
+ActiveRecord::Schema.define(:version => 20130518195150) do
 
   create_table "providers", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,19 @@ ActiveRecord::Schema.define(:version => 20130514202952) do
   end
 
   add_index "providers", ["user_id"], :name => "index_providers_on_user_id"
+
+  create_table "tweets", :force => true do |t|
+    t.integer  "provider_id"
+    t.string   "tweet_id"
+    t.string   "text"
+    t.string   "screen_name"
+    t.string   "profile_image_url"
+    t.datetime "received_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "tweets", ["provider_id"], :name => "index_tweets_on_provider_id"
 
   create_table "users", :force => true do |t|
     t.string   "email"
