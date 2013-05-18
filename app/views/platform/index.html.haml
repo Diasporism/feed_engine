@@ -1,0 +1,33 @@
+.row-fluid
+  .span3
+
+.row-fluid
+  .span12
+    .span2
+      %table.side_menu
+        %tr
+          %td Inbox
+        %tr
+          %td Gmail
+        %tr
+          %td Facebook
+        %tr
+          %td Twitter
+
+  -if @twitter_timeline
+    .span10
+      %table.main
+        %tr.header
+          %th Sender
+          %th Message
+          %th Date/Time
+        - @twitter_timeline.each do |tweet|
+          %tr
+            %td
+              = tweet[:user][:screen_name]
+              .br
+              = image_tag tweet[:user][:profile_image_url_https]
+            %td
+              = auto_link(tweet[:text], :html => { :target => '_blank' })
+            %td
+              = tweet[:created_at]
