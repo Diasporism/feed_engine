@@ -7,12 +7,17 @@ describe PlatformController do
   let(:user) { User.create(email: 'lsears322@gmail.com') }
   let(:user2) { User.create(email: 'lsears32@gmail.com') }
   let(:current_user) { controller.current_user }
-  let!(:provider) { user2.providers.create(name: 'twitter',
+  let!(:twitter_provider) { user2.providers.create(name: 'twitter',
                                           uid: 438712211,
+                                          token: token,
+                                          secret: secret) }
+  let!(:google_provider) { user2.providers.create(name: 'google_oauth2',
+                                          uid: 438712231,
                                           token: token,
                                           secret: secret) }
 
   describe '#index' do
+
     context 'When the current user is logged in' do
       context 'but has not added any providers to their feed' do
         xit 'a gmail client is created' do

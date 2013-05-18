@@ -15,15 +15,16 @@
           %td Twitter
   - if @emails
     .span10
-      %table.mail
-      %tr.header
-        %th email
-      - @emails.each do |email|
-        %tr
-          %td
-            = email.inspect
-          %td
-            hello
+      %table.main
+        %tr.header
+          %th email
+        - @emails.each do |email|
+          %tr
+            %td
+              = email.subject
+
+            %td
+              = email.text_part.body
 
   -if @twitter_timeline
     .span10
