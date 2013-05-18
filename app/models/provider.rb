@@ -1,5 +1,5 @@
 class Provider < ActiveRecord::Base
-  attr_accessible :name, :uid
+  attr_accessible :name, :uid, :token, :secret
 
   belongs_to :user
 

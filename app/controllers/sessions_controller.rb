@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
 
   def create
     auth = request.env["omniauth.auth"]
+    session[:auth] = auth
     user = User.new(email: auth['info']['email'])
     if user.save
       auto_login(User.find_by_email(user.email))

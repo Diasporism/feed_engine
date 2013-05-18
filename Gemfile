@@ -23,8 +23,8 @@ end
 
 group :development do
   gem 'unicorn'
-  #gem 'better_errors'
-  #gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :test do
@@ -32,6 +32,7 @@ group :test do
   #gem 'vcr'
   gem 'fakeweb'
   gem 'capybara-mechanize'
+  gem 'simplecov', :require => false, :group => :test
 end
 
 gem 'jquery-rails'
