@@ -1,8 +1,6 @@
 .row-fluid
   .span3
 
-= session[:oauth_google].inspect
-
 .row-fluid
   .span12
     .span2
@@ -26,14 +24,15 @@
             = email.inspect
           %td
             hello
-  -if @timeline
+
+  -if @twitter_timeline
     .span10
       %table.main
         %tr.header
           %th Sender
           %th Message
           %th Date/Time
-        - @timeline.each do |tweet|
+        - @twitter_timeline.each do |tweet|
           %tr
             %td
               = tweet[:user][:screen_name]
@@ -43,6 +42,3 @@
               = auto_link(tweet[:text], :html => { :target => '_blank' })
             %td
               = tweet[:created_at]
-
-
-

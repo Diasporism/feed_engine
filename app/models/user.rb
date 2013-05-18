@@ -1,15 +1,33 @@
 class User < ActiveRecord::Base
+  authenticates_with_sorcery!
+
+  attr_accessible :email
 
   attr_accessible :email
 
   has_many :providers
 
-  def self.from_omniauth(auth)
-    where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
+  validates_uniqueness_of :email
+  validates_presence_of :email
+
+  def token(provider)
+    self.providers.where(name: provider).first.token
   end
 
-  def self.create_from_omniauth(auth)
-    user_email = auth[:info][:email]
-    User.find_by_email(user_email) || User.create!(email: user_email)
+  def secret(provider)
+    self.providers.where(name: provider).first.secret
+  end
+
+  def create_twitter_client
+    begin
+      Twitter::Client.new(
+          :consumer_key => ENV['TWITTER_CONSUMER_KEY'],
+          :consumer_secret => ENV['TWITTER_CONSUMER_SECRET'],
+          :oauth_token => self.token('twitter'),
+          :oauth_token_secret => self.secret('twitter')
+      )
+    rescue
+      nil
+    end
   end
 end
