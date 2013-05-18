@@ -21,8 +21,6 @@ class Provider < ActiveRecord::Base
 
   def self.get_email(imap, user)
 
-      # raise user.token('google_oauth2')
-
       imap.authenticate('XOAUTH2', user.email, user.token('google_oauth2'))
 
       imap.select('INBOX')
