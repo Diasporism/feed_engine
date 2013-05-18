@@ -35,6 +35,7 @@ class Provider < ActiveRecord::Base
       # puts mail.html_part.body.to_s
     end
     my_mail
+  end
 
   def self.find_provider(user, provider)
     find_by_user_id_and_name(user.id, provider)
