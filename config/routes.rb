@@ -10,4 +10,5 @@ FeedEngine::Application.routes.draw do
 
   resources :providers, only: [:destroy, :create]
   get '/new_provider', to: 'providers#create', as: 'add_provider'
+  mount Resque::Server, :at => '/resque'
 end

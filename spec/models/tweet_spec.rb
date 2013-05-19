@@ -10,8 +10,8 @@ describe Tweet do
                                           token: token,
                                           secret: secret) }
   let(:tweets) do
-    [{ :created_at=>"Sat May 18 20:02:13 +0000 2013", :id_str=>"335847813726482432", :text=>"refactor all the things!", :user=>{:screen_name=>"ecoffey", :profile_image_url=>"http://a0.twimg.com/profile_images/2781291847/a95f057eaa758be7cf2e4e9dadb383dc_normal.png"} },
-     { :created_at=>"Fri May 17 20:02:13 +0000 2013", :id_str=>"325847813726482432", :text=>"test all the things!", :user=>{:screen_name=>"diasporism", :profile_image_url=>"http://si0.twimg.com/profile_images/3193921429/a62c2ab2733a666bb7dc41913b4f3b1c_bigger.jpeg"} }]
+    [{ :created_at=>"Sat May 18 20:02:13 +0000 2013", :id=>335847813726482432, :text=>"refactor all the things!", :user=>{:screen_name=>"ecoffey", :profile_image_url=>"http://a0.twimg.com/profile_images/2781291847/a95f057eaa758be7cf2e4e9dadb383dc_normal.png"} },
+     { :created_at=>"Fri May 17 20:02:13 +0000 2013", :id=>325847813726482431, :text=>"test all the things!", :user=>{:screen_name=>"diasporism", :profile_image_url=>"http://si0.twimg.com/profile_images/3193921429/a62c2ab2733a666bb7dc41913b4f3b1c_bigger.jpeg"} }]
   end
 
   let(:twitter_client) {user.create_twitter_client}
