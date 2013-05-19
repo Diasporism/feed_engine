@@ -1,5 +1,4 @@
 
-
 .row-fluid
   .span3
 
@@ -26,9 +25,11 @@
               = email.subject
 
             %td
-              = email.text_part.body
+              = email.body
             %td
-              = email.inspect
+              = email.from
+            %td
+              = email.received
 
   -if @twitter_timeline
     .span10
