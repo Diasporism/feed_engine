@@ -18,6 +18,7 @@ gem 'gmail'
 gem 'sorcery'
 gem 'resque'
 gem 'redis'
+gem 'kaminari'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
