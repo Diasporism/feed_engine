@@ -28,7 +28,9 @@
             %td
               = email.text_part.body
             %td
-              = email.inspect
+              = email.from
+            %td
+              = email.received
 
   -if @twitter_timeline
     .span10
