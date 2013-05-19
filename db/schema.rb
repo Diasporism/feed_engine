@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130518195150) do
+ActiveRecord::Schema.define(:version => 20130518231759) do
+
+  create_table "emails", :force => true do |t|
+    t.integer "provider_id"
+    t.string  "received"
+    t.string  "from"
+    t.string  "subject"
+    t.string  "body"
+  end
+
+  add_index "emails", ["provider_id"], :name => "index_emails_on_provider_id"
 
   create_table "providers", :force => true do |t|
     t.integer  "user_id"

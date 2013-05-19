@@ -1,3 +1,5 @@
+
+
 .row-fluid
   .span3
 
@@ -13,6 +15,20 @@
           %td Facebook
         %tr
           %td Twitter
+  - if @emails
+    .span10
+      %table.main
+        %tr.header
+          %th email
+        - @emails.each do |email|
+          %tr
+            %td
+              = email.subject
+
+            %td
+              = email.text_part.body
+            %td
+              = email.inspect
 
   -if @twitter_timeline
     .span10
