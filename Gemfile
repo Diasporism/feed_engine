@@ -13,6 +13,8 @@ gem 'haml-rails'
 gem 'bootstrap-sass'
 gem 'simple_form'
 gem 'certified'
+gem 'gmail_xoauth'
+gem 'gmail'
 gem 'sorcery'
 gem 'resque', require: 'resque/server'
 gem 'resque-scheduler', :require => 'resque_scheduler'
@@ -35,6 +37,7 @@ group :test do
   gem 'fakeweb'
   gem 'capybara-mechanize'
   gem 'simplecov', :require => false, :group => :test
+  gem 'factory_girl_rails'
 end
 
 gem 'jquery-rails'

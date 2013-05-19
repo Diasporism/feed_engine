@@ -6,7 +6,6 @@ class PlatformController < ApplicationController
     twitter_client = current_user.create_twitter_client
     if twitter_client
       twitter_provider = Provider.find_provider(current_user, 'twitter')
-
       if twitter_provider.tweets.first
         tweets = twitter_provider.tweets.order('received_at DESC').limit(20)
       else
@@ -15,8 +14,11 @@ class PlatformController < ApplicationController
         Tweet.save_tweets(current_user, tweets)
         tweets = twitter_provider.tweets.limit(20)
       end
-      #Resque.enqueue(TweetFetcher, current_user.id)
     end
+
+    gmail_client = current_user.create_imap_client
+    user = User.find(session[:user_id])
+    @emails = Provider.get_email(gmail_client, user)
     @twitter_timeline = tweets
   end
 
