@@ -1,7 +1,7 @@
 class Tweet < ActiveRecord::Base
   belongs_to :provider
 
-  attr_accessible :provider_id, :tweet_id, :text, :screen_name, :profile_image_url
+  attr_accessible :provider_id, :tweet_id, :text, :screen_name, :profile_image_url, :received_at
 
   def self.save_tweets(user, tweets)
     tweets.each do |tweet|
@@ -10,7 +10,9 @@ class Tweet < ActiveRecord::Base
                    tweet_id: tweet[:id_str],
                    text: tweet[:text],
                    screen_name: tweet[:user][:screen_name],
-                   profile_image_url: tweet[:user][:profile_image_url])
+                   profile_image_url: tweet[:user][:profile_image_url],
+                   received_at: tweet[:created_at])
+
     end
   end
 
