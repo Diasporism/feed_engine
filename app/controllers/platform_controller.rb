@@ -7,7 +7,7 @@ class PlatformController < ApplicationController
     platform = Platform.new(current_user)
 
     timeline = platform.user_timeline
-    
+
     @timeline = Kaminari.paginate_array(timeline).page(params[:page]).per(10)
   end
 
@@ -15,10 +15,4 @@ class PlatformController < ApplicationController
     @params = params
     render :layout => false
   end
-
-  private
-
-
-
-
 end
