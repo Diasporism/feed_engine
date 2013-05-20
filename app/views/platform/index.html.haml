@@ -12,46 +12,74 @@
           %td Gmail
         %tr
           %td Twitter
-    - if @emails
-      .span10
-        %table.main
-          .row-fluid
-            %tr.header
-              %th Gmail
-            - @emails.each do |email|
-              %tr
-                %td
-                  .span1
-                    = image_tag 'http://placehold.it/48/48'
-                  .text-left.span3
-                    = email[:from]
-                  .span5
-                  .text-right.span3
-                    = email[:received]
-                  .span11
-                    .text-left
-                      = email[:subject]
-                      .br
-                      = auto_link(email[:body], :html => { :target => '_blank' })
+    -#- if @emails
+    -#  .span10
+    -#    %table.main
+    -#      .row-fluid
+    -#        %tr.header
+    -#          %th Gmail
+    -#        - @emails.each do |email|
+    -#          %tr
+    -#            %td
+    -#              .span1
+    -#                = image_tag 'http://placehold.it/48/48'
+    -#              .text-left.span3
+    -#                = email[:from]
+    -#              .span5
+    -#              .text-right.span3
+    -#                = email[:received]
+    -#              .span11
+    -#                .text-left
+    -#                  = email[:subject]
+    -#                  .br
+    -#                  = auto_link(email[:body], :html => { :target => '_blank' })
+    -#
+    -#
+    -#
+    -#-if @twitter_timeline
+    -#  .span10
+    -#    %table.main
+    -#      .row-fluid
+    -#        %tr.header
+    -#          %th Twitter
+    -#        - @twitter_timeline.each do |tweet|
+    -#          %tr
+    -#            %td
+    -#              .span1
+    -#                = image_tag tweet.profile_image_url
+    -#              .text-left.span3
+    -#                = "@#{tweet.screen_name}"
+    -#              .span5
+    -#              .text-right.span3
+    -#                = Tweet.format_time(tweet.received_at)
+    -#              .span11
+    -#                .text-left
+    -#                  = auto_link(tweet.text, :html => { :target => '_blank' })
+
+  -if @timeline
+    .span10
+      %table.main
+        %tr.header
+          %th Sender
+          %th Message
+          %th Date/Time
+        - @timeline.each do |message|
+          %tr
+          - if message.kind_of?(Email)
+            %td
+              = message.subject
+            %td
+              = message.received_at
+          - else
+            %td
+              = message.screen_name
+              .br
+              = image_tag message.profile_image_url
+            %td
+              = auto_link(message.text)
+            %td
+              = message.received_at
 
 
 
-    -if @twitter_timeline
-      .span10
-        %table.main
-          .row-fluid
-            %tr.header
-              %th Twitter
-            - @twitter_timeline.each do |tweet|
-              %tr
-                %td
-                  .span1
-                    = image_tag tweet.profile_image_url
-                  .text-left.span3
-                    = "@#{tweet.screen_name}"
-                  .span5
-                  .text-right.span3
-                    = Tweet.format_time(tweet.received_at)
-                  .span11
-                    .text-left
-                      = auto_link(tweet.text, :html => { :target => '_blank' })
+- paginate @timeline

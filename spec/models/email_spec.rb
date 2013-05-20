@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Email do
 
-  let!(:mail) { Email.create(from: "example", subject: "ahoy", body: "hoy", received: "now", uid: "07846")}
+  let!(:mail) { Email.create(from: "example", subject: "ahoy", body: "hoy", received_at: "Sat May 18 20:02:13 +0000 2013", uid: "07846")}
 
   describe ".from" do 
 
@@ -35,12 +35,22 @@ describe Email do
     end
   end
 
-  describe ".received" do 
+  describe ".received_at" do 
 
-    context "given an email has a received at" do 
+    context "given an email has a date for when it was received at" do 
 
       it "has a received at" do 
-        expect(mail.received).to be
+        expect(mail.received_at).to be
+      end
+    end
+  end
+
+  describe ".uid" do 
+
+    context "given an email has a unique id" do 
+
+      it "has a uid" do 
+        expect(mail.uid).to be
       end
     end
   end
@@ -55,7 +65,7 @@ describe Email do
   end
 
 
-  describe ".uid" do 
+  describe ".uid" do
 
     context "given an email has a unique id" do 
 
