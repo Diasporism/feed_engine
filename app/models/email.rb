@@ -2,7 +2,7 @@ class Email < ActiveRecord::Base
 
   belongs_to :provider
 
-  attr_accessible :from, :subject, :body, :received
+  attr_accessible :from, :subject, :body, :received, :uid
 
   def self.save(mail, user)
     provider = find_provider(user, 'google_oauth2')

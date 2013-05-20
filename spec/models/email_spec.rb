@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Email do
 
-  let!(:mail) { Email.create(from: "example", subject: "ahoy", body: "hoy", received: "now")}
+  let!(:mail) { Email.create(from: "example", subject: "ahoy", body: "hoy", received: "now", uid: "07846")}
 
   describe ".from" do 
 
@@ -48,12 +48,20 @@ describe Email do
   describe "#save" do 
 
     it "takes in an email and saves the necessary parts" do
-
       pending "need to create a mock for mail"
       # mail = Mail::Message
-
       expect{ Email.save(mail) }.to change( Email, :count ).by(2)
+    end
+  end
 
+
+  describe ".uid" do 
+
+    context "given an email has a unique id" do 
+
+      it "has a uid" do 
+        expect(mail.uid).to be
+      end
     end
   end
 end
