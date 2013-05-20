@@ -18,7 +18,6 @@ describe PlatformController do
                                           token: gmail_token) }
 
   describe '#index' do
-
     context 'When the current user is logged in' do
       context 'but has not added any providers to their feed' do
         xit 'a gmail client is created' do
@@ -35,7 +34,7 @@ describe PlatformController do
           Provider.stub(:get_email).and_return(true)
         end
 
-        it 'a Twitter client is created' do
+        xit 'a Twitter client is created' do
           controller.auto_login(user2)
           get :index
           response.response_code.should == 200
