@@ -19,24 +19,12 @@ class Provider < ActiveRecord::Base
   end
 
   def self.get_email(imap, user)
-
-      imap.authenticate('XOAUTH2', user.email, user.token('google_oauth2'))
-
-      imap.select('INBOX')
-
-      imap.search(["NOT", "SEEN"]).each do |message_id|
-      # imap.search(['ALL']).each do |message_id|
-
-
-
+    imap.authenticate('XOAUTH2', user.email, user.token('google_oauth2'))
+    imap.select('INBOX')
+    imap.search(["NOT", "SEEN"]).each do |message_id|
       msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
       mail = Mail.read_from_string msg
-
       Email.save(mail, user)
-
-      # raise mail.subject
-      # puts mail.text_part.body.to_s
-      # puts mail.html_part.body.to_s
     end
   end
 

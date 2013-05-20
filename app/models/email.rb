@@ -18,7 +18,6 @@ class Email < ActiveRecord::Base
 
   def self.email_for_user(user)
     provider = find_provider(user, 'google_oauth2')
-
     self.where(provider_id: provider.id)
   end
 
