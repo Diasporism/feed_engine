@@ -19,19 +19,16 @@ class PlatformController < ApplicationController
 
     gmail_client = current_user.create_imap_client
     user = User.find(session[:user_id])
-    Provider.get_email(gmail_client, user)
-
-    #emails = [{id: 1, provider_id: 1, received: "[by 10.70.102.143 with SMTP id fo15csp109137pdb; Mo...", from: "danmee10@gmail.com", subject: "Hey Logan!!", body: "I heard you're working revolutionizing the inbox, clkjshdf kjdfhsdf lskhfd hsdfl lsdf lkhsdfljsldgsd lsdflkshdf dlkshf lskhdf dsflkhsdf", uid: nil}]
-    
+    #@emails = [{id: 1, provider_id: 1, received: "[by 10.70.102.143 with SMTP id fo15csp109137pdb; Mo...", from: "danmee10@gmail.com", subject: "Hey Logan!!", body: "I heard you're working revolutionizing the inbox, clkjshdf kjdfhsdf lskhfd hsdfl lsdf lkhsdfljsldgsd lsdflkshdf dlkshf lskhdf dsflkhsdf", uid: nil}]
     connect_gmail(gmail_client, user)
-    get_email(user.id)
-    emails = Email.email_for_user(user.id)
+    emails = get_email(user.id)
 
     if tweets != nil
       timeline = (tweets + emails).sort! {|x,y| y.received_at <=> x.received_at}
     else
       timeline = emails.order('received_at DESC')
     end
+
     @timeline = Kaminari.paginate_array(timeline).page(params[:page]).per(10)
   end
 
