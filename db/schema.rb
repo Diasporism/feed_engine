@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130518231759) do
+ActiveRecord::Schema.define(:version => 20130520174146) do
 
   create_table "emails", :force => true do |t|
-    t.integer "provider_id"
-    t.string  "received"
-    t.string  "from"
-    t.string  "subject"
-    t.string  "body"
+    t.integer  "provider_id"
+    t.string   "from"
+    t.string   "subject"
+    t.string   "body"
+    t.string   "uid"
+    t.datetime "received_at"
   end
 
   add_index "emails", ["provider_id"], :name => "index_emails_on_provider_id"

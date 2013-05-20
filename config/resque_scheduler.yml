@@ -1,0 +1,5 @@
+tweet_fetcher:
+  every: ["60s"]
+  class: TweetFetcher
+  queue: tweets_queue
+  description: "This job will check for new tweets every 60 seconds and save them to the database"

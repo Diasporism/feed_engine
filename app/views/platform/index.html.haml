@@ -4,7 +4,7 @@
 
 .row-fluid
   .span12
-    .span2
+    .span1
       %table.side_menu
         %tr
           %td Inbox
@@ -14,22 +14,6 @@
           %td Facebook
         %tr
           %td Twitter
-  - if @emails
-    .span10
-      %table.main
-        %tr.header
-          %th email
-        - @emails.each do |email|
-          %tr
-            %td
-              = email.subject
-
-            %td
-              = email.body
-            %td
-              = email.from
-            %td
-              = email.received
 
   -if @timeline
     .span10
@@ -38,17 +22,22 @@
           %th Sender
           %th Message
           %th Date/Time
-        - @timeline.each do |tweet|
+        - @timeline.each do |message|
           %tr
+          - if message.kind_of?(Email)
             %td
-              = tweet[:user][:screen_name] 
+              = message.subject
+          - else
+            %td
+              = message[:user][:screen_name] 
               .br
-              = image_tag tweet[:user][:profile_image_url_https]
+              = image_tag message[:user][:profile_image_url_https]
             %td
-              = auto_link(tweet[:text], :html => { :target => '_blank' })
+              = auto_link(message[:text], :html => { :target => '_blank' })
             %td
-              = tweet[:created_at]
+              = message[:created_at]
 
 
 
-- paginate @timeline if @timeline != nil
+- paginate @timeline
+
