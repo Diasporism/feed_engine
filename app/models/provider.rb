@@ -4,6 +4,7 @@ class Provider < ActiveRecord::Base
 
   belongs_to :user
   has_many :tweets
+  has_many :emails
 
   validates_uniqueness_of :uid
   validates_presence_of :uid

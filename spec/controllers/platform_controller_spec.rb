@@ -40,6 +40,23 @@ describe PlatformController do
           response.response_code.should == 200
         end
       end
+
+      context "a user has authorized both gmail and twitter" do
+
+        let!(:user) {User.create(email: "yolo@email.com")}
+        let!(:google_oauth) {FactoryGirl.create(:provider, user: user)}
+        let!(:mail_1) { FactoryGirl.create(:mail, provider: provider)} 
+        let!(:mail_2) { FactoryGirl.create(:mail, provider: provider)}
+
+        before do 
+          Provider.stub(:get_email)
+          User.stub(:find).and_return(user)
+        end
+
+        it "returns a list of tweets and emails, sorted by date" do 
+          expect(assigns(:timeline).first.name).to eq mail_1.name
+        end
+      end
     end
   end
 end
