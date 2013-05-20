@@ -27,15 +27,17 @@
           - if message.kind_of?(Email)
             %td
               = message.subject
+            %td
+              = message.received_at
           - else
             %td
-              = message[:user][:screen_name] 
+              = message.screen_name
               .br
-              = image_tag message[:user][:profile_image_url_https]
+              = image_tag message.profile_image_url
             %td
-              = auto_link(message[:text], :html => { :target => '_blank' })
+              = auto_link(message.text)
             %td
-              = message[:created_at]
+              = message.received_at
 
 
 

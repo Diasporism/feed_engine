@@ -1,11 +1,13 @@
-class PlatformController < ApplicationController
+class Platform
 
-  before_filter :require_login, only: [:index]
+  def initialize(user)
+    @user = user
+  end 
 
-  def index
-    twitter_client = current_user.create_twitter_client
+  def get_tweets
+
     if twitter_client
-      twitter_provider = Provider.find_provider(current_user, 'twitter')
+      twitter_provider = Provider.find_provider(user, 'twitter')
       if twitter_provider.tweets.first
         tweets = twitter_provider.tweets.order('received_at ASC').limit(20)
       else
@@ -15,38 +17,13 @@ class PlatformController < ApplicationController
         tweets = twitter_provider.tweets.limit(20)
       end
     end
-
-    gmail_client = current_user.create_imap_client
-    user = User.find(session[:user_id])
-    
-    connect_gmail(gmail_client, user)
-
-    get_email(user.id)
-
-    emails = Email.email_for_user(user.id)
-
-    if tweets != nil
-      timeline = (tweets + emails).sort! {|x,y| y.received_at <=> x.received_at}
-    else
-      timeline = emails.order('received_at DESC')
-    end
-    @timeline = Kaminari.paginate_array(timeline).page(params[:page]).per(10)
   end
 
-  def splash
-    @params = params
-    render :layout => false
+  private 
+
+  def save_tweet(user, tweets)
+    Tweet.save_tweets(user, tweets)
   end
 
-  private
 
-
-
-  def connect_gmail(gmail_client, user)
-    Provider.get_email(gmail_client, user)
-  end
-
-  def get_email(user)
-    Email.email_for_user(user)
-  end
-end
+end 
