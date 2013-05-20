@@ -13,7 +13,7 @@ class Tweet < ActiveRecord::Base
                    text: tweet[:text],
                    screen_name: tweet[:user][:screen_name],
                    profile_image_url: tweet[:user][:profile_image_url],
-                   received_at: tweet[:created_at])
+                   received_at: DateTime.parse(tweet[:created_at].to_s))
     end
   end
 
@@ -21,4 +21,39 @@ class Tweet < ActiveRecord::Base
     tweets = twitter_client.home_timeline(options = {since_id: tweet_id.to_i + 1})
     save_tweets(user, tweets)
   end
+
+  def self.format_time(tweet_time)
+    current_time = DateTime.now.new_offset(Rational(0, 24))
+    seconds = ((current_time - DateTime.parse(tweet_time.to_s)) * 24 * 60 * 60).to_i
+    if seconds < 60
+      'Just now'
+    elsif seconds < 3600
+      more_than_minute(seconds)
+    elsif seconds < (3600 * 24)
+      more_than_hour(seconds)
+    else
+      tweet_time.strftime('%e %b')
+    end
+  end
+
+  private
+
+  def self.more_than_minute(seconds)
+    t = seconds / 60
+    if t == 1
+      "#{t} minute ago"
+    else
+      "#{t} minutes ago"
+    end
+  end
+
+  def self.more_than_hour(seconds)
+    t = ((seconds / 60) / 60)
+    if t == 1
+      "#{t} hour ago"
+    else
+      "#{t} hours ago"
+    end
+  end
+
 end

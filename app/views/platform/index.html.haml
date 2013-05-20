@@ -15,7 +15,7 @@
         %tr
           %td Twitter
     - if @emails
-      .span6
+      .span10
         %table.main
           %tr.header
             %th Sender
@@ -33,20 +33,22 @@
               %td
                 = email.received
 
-      -if @twitter_timeline
-        .span5
-          %table.main
+    -if @twitter_timeline
+      .span10
+        %table.main
+          .row-fluid
             %tr.header
-              %th Sender
-              %th Message
-              %th Date/Time
+              %th Twitter
             - @twitter_timeline.each do |tweet|
               %tr
                 %td
-                  = tweet.screen_name
-                  .br
-                  = image_tag tweet.profile_image_url
-                %td
-                  = auto_link(tweet.text, :html => { :target => '_blank' })
-                %td
-                  = tweet.received_at
+                  .span1
+                    = image_tag tweet.profile_image_url
+                  .text-left.span3
+                    = "@#{tweet.screen_name}"
+                  .span5
+                  .text-right.span3
+                    = Tweet.format_time(tweet.received_at)
+                  .span11
+                    .text-left
+                      = auto_link(tweet.text, :html => { :target => '_blank' })
