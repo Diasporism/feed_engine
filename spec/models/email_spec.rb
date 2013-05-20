@@ -54,4 +54,16 @@ describe Email do
       end
     end
   end
+
+  describe "#save" do 
+
+    it "takes in an email and saves the necessary parts" do
+
+      pending "need to create a mock for mail"
+      # mail = Mail::Message
+
+      expect{ Email.save(mail) }.to change( Email, :count ).by(2)
+
+    end
+  end
 end

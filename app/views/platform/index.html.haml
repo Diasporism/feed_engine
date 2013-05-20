@@ -1,5 +1,4 @@
 
-
 .row-fluid
   .span3
 
@@ -15,35 +14,39 @@
           %td Facebook
         %tr
           %td Twitter
-  - if @emails
-    .span10
-      %table.main
-        %tr.header
-          %th email
-        - @emails.each do |email|
-          %tr
-            %td
-              = email.subject
-
-            %td
-              = email.text_part.body
-            %td
-              = email.inspect
-
-    -if @twitter_timeline
+    - if @emails
       .span11
         %table.main
           %tr.header
             %th Sender
-            %th Message
+            %th Subject
+            %th Body
             %th Date/Time
-          - @twitter_timeline.each do |tweet|
+          - @emails.each do |email|
             %tr
               %td
-                = tweet.screen_name
-                .br
-                = image_tag tweet.profile_image_url
+                = email.from
               %td
-                = auto_link(tweet.text, :html => { :target => '_blank' })
+                = email.subject
               %td
-                = tweet.received_at
+                = email.body
+              %td
+                = email.received
+
+      -if @twitter_timeline
+        .span11
+          %table.main
+            %tr.header
+              %th Sender
+              %th Message
+              %th Date/Time
+            - @twitter_timeline.each do |tweet|
+              %tr
+                %td
+                  = tweet.screen_name
+                  .br
+                  = image_tag tweet.profile_image_url
+                %td
+                  = auto_link(tweet.text, :html => { :target => '_blank' })
+                %td
+                  = tweet.received_at

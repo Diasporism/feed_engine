@@ -27,7 +27,7 @@ describe SessionsController do
         } 
       end
 
-      xit 'creates a user account' do
+      it 'creates a user account' do
         @request.env['omniauth.auth'] = google_omniauth_env
         post :create
         user = User.find_by_email(google_email)

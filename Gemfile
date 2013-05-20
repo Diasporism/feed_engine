@@ -18,6 +18,8 @@ gem 'gmail'
 gem 'sorcery'
 gem 'resque', require: 'resque/server'
 gem 'resque-scheduler', :require => 'resque_scheduler'
+gem 'redis'
+gem 'kaminari'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
