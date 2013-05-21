@@ -43,18 +43,17 @@ describe PlatformController do
 
       context "a user has authorized both gmail and twitter" do
 
-        # let!(:user) {User.create(email: "yolo@email.com")}
-        # let!(:google_oauth) {FactoryGirl.create(:provider, user: user)}
-        # let!(:mail_1) { FactoryGirl.create(:mail, provider: provider)} 
+        let(:user) {User.create(email: "yolo@email.com")}
+        let(:google_oauth) {Provider.create(provider: "google_oauth2", user: user, uid: "123456789", token: "token")}
+        let(:mail) { Email.create(provider: provider, from: "example", subject: "ahoy", body: "hoy", received_at: "Sat May 18 20:02:13 +0000 2013", uid: "07846")}
         # let!(:mail_2) { FactoryGirl.create(:mail, provider: provider)}
 
         before do 
-          Provider.stub(:get_email)
-          User.stub(:find).and_return(user)
+          controller.stub(:current_user).and_return(user)
         end
 
         it "returns a list of tweets and emails, sorted by date" do
-          pending "need to fix factory girl" 
+          get :index
           expect(assigns(:timeline).first.name).to eq mail_1.name
         end
       end
