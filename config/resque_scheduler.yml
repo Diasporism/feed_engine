@@ -1,5 +1,5 @@
-tweet_fetcher:
-  every: ["60s"]
-  class: TweetFetcher
-  queue: tweets_queue
-  description: "This job will check for new tweets every 60 seconds and save them to the database"
+requeue_failed_jobs:
+  every: 1m
+  class: RequeueFailedJobs
+  queue: requeue_jobs_queue
+  description: "This job requeues all failed jobs"

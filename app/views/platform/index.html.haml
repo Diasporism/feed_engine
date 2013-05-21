@@ -29,7 +29,7 @@
                       = message.from
                     .span5
                     .text-right.span3
-                      = message.received_at
+                      = Feed.format_time(message.received_at)
                     .span11
                       .text-left.message
                         = message.subject
@@ -44,10 +44,10 @@
                       = "@#{message.screen_name}"
                     .span5
                     .text-right.span3
-                      = Tweet.format_time(message.received_at)
+                      = Feed.format_time(message.received_at)
                     .span11
                       .text-left
                         = auto_link(message.text, :html => { :target => '_blank' })
 
-    .text-center.span12
-      = paginate @timeline
+      .text-center.span12
+        = paginate @timeline
