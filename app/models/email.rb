@@ -4,14 +4,14 @@ class Email < ActiveRecord::Base
 
   attr_accessible :from, :subject, :body, :received_at, :uid
 
-  def self.save(mail, user)
+  def self.save_email(mail, user)
     provider = find_provider(user, 'google_oauth2')
 
-    create! do |m|
-      m.from = mail.from.first.to_s
-      m.subject = mail.subject.to_s
-      m.body = mail.text_part.body.to_s
-      m.received_at = mail.received.to_s
+    create do |m|
+      m.from = mail.from.first.to_s.force_encoding("ASCII-8BIT").encode('UTF-8', undef: :replace, replace: '')
+      m.subject = mail.subject.to_s.force_encoding("ASCII-8BIT").encode('UTF-8', undef: :replace, replace: '')
+      m.body = mail.text_part.body.to_s.force_encoding("ASCII-8BIT").encode('UTF-8', undef: :replace, replace: '') if mail.text_part
+      m.received_at = mail.received.to_s.force_encoding("ASCII-8BIT").encode('UTF-8', undef: :replace, replace: '')
       m.provider_id = provider.id
     end
   end
