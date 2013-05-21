@@ -10,5 +10,4 @@
 /config/application.yml
 .IDEA
 .DS_Store
-gemfile.lock
 
