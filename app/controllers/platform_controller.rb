@@ -3,9 +3,7 @@ class PlatformController < ApplicationController
 
   def index
     platform = Platform.new(current_user)
-
-    timeline = platform.user_timeline
-
+    timeline = platform.timeline
     @timeline = Kaminari.paginate_array(timeline).page(params[:page]).per(10)
   end
 

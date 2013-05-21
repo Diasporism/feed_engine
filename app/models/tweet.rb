@@ -18,7 +18,7 @@ class Tweet < ActiveRecord::Base
   end
 
   def self.check_for_tweets(user, twitter_client, tweet_id)
-    tweets = twitter_client.home_timeline(options = {since_id: tweet_id.to_i + 1})
+    tweets = twitter_client.mentions_timeline(options = {since_id: tweet_id.to_i + 1})
     save_tweets(user, tweets)
   end
 
@@ -34,6 +34,11 @@ class Tweet < ActiveRecord::Base
     else
       tweet_time.strftime('%e %b')
     end
+  end
+
+  def self.latest_tweet_id(user)
+    tweet = Provider.find_provider(user, 'twitter').tweets.order('received_at DESC').first
+    tweet ? tweet.tweet_id : 0
   end
 
   private
