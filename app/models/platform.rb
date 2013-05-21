@@ -10,34 +10,30 @@ class Platform
     if tweets != nil
       (tweets + emails).sort! {|x,y| y.received_at <=> x.received_at}
     else
-      emails.order('received_at DESC')
+      emails.sort! {|x,y| y.received_at <=> x.received_at} unless emails.empty?
     end
   end
 
+  def self.connect_gmail(gmail_client, user)
+    Provider.get_email(gmail_client, user)
+  end
+
+  def self.get_email(user)
+    Email.email_for_user(user.id)
+  end
+
   private
+
+  def emails
+    email_provider(self.user).emails.all
+  end
 
   def tweets
     get_tweets if twitter_client
   end
 
-  def emails
-    gmail_client = self.user.create_imap_client
-    
-    connect_gmail(gmail_client)
-
-    get_email
-  end 
-
   def save_tweet(tweets)
     Tweet.save_tweets(self.user, tweets)
-  end
-
-  def connect_gmail(gmail_client)
-    Provider.get_email(gmail_client, self.user)
-  end
-
-  def get_email
-    Email.email_for_user(self.user.id)
   end
 
   def twitter_client
@@ -46,6 +42,10 @@ class Platform
 
   def twitter_provider
     Provider.find_provider(self.user, 'twitter')
+  end
+
+  def email_provider(user)
+    Provider.find_provider(user.id, 'google_oauth2')
   end
 
   def get_tweets

@@ -2,6 +2,7 @@ class TweetFetcher
   @queue = :tweets_queue
 
   def self.perform(args)
+    puts 'Checking for tweets'
     user = User.find(args['user_id'])
     tweet_id = Tweet.latest_tweet_id(user)
     twitter_client = user.create_twitter_client
