@@ -7,7 +7,7 @@ class Platform
   end 
 
   def timeline
-    if tweets != nil
+    if tweets.present?
       (tweets + emails).sort! {|x,y| y.received_at <=> x.received_at}
     else
       emails.sort! {|x,y| y.received_at <=> x.received_at} unless emails.empty?
@@ -33,15 +33,15 @@ class Platform
   end
 
   def save_tweet(tweets)
-    Tweet.save_tweets(self.user, tweets)
+    Tweet.save_tweets(user, tweets)
   end
 
   def twitter_client
-    self.user.create_twitter_client
+    user.create_twitter_client
   end
 
   def twitter_provider
-    Provider.find_provider(self.user, 'twitter')
+    Provider.find_provider(user, 'twitter')
   end
 
   def email_provider(user)
