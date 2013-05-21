@@ -31,6 +31,7 @@ group :development do
   gem 'unicorn'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pg'
 end
 
 group :test do
