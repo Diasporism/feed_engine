@@ -23,7 +23,6 @@ class Provider < ActiveRecord::Base
     imap.authenticate('XOAUTH2', user.email, user.token('google_oauth2'))
     imap.select('INBOX')
 
-
     # imap.search(['ALL']).each do |message_id|
     imap.search(["NOT", "SEEN"]).each do |message_id|
       msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
