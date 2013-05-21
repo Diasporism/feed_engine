@@ -20,6 +20,7 @@ gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'redis'
 gem 'kaminari'
 gem 'pg'
+gem 'redis-store'
 
 
 group :assets do
