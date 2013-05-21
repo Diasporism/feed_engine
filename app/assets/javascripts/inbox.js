@@ -1,9 +1,9 @@
 $(document).ready(function(){
-  var showChar = 100;
+  var showChar = 200;
   var ellipsestext = "...";
   var moretext = "more";
   var lesstext = "less";
-  $('p.message').each(function() {
+  $('.message').each(function() {
     var content = $(this).html();
 
     if(content.length > showChar) {
@@ -26,8 +26,8 @@ $(document).ready(function(){
       $(this).addClass("less");
       $(this).html(lesstext);
     }
-    $(this).prev().prev().toggle();            //elipse toggle
-    $(this).prev().toggle('slow');        //morecontent toggle
+    $(this).prev().prev().slideToggle();            //elipse toggle
+    $(this).prev().slideToggle('slow');        //morecontent toggle
     return false;
   });
 });
