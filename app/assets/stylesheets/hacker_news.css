@@ -80,3 +80,12 @@ h2 {
   margin-left: 10px;
   text-align: center;
 }
+
+.body {
+  word-wrap: break-word;
+  width: 85%;
+}
+
+.sender {
+  font-weight: bold;
+}

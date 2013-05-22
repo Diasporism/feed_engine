@@ -8,10 +8,10 @@ class Email < ActiveRecord::Base
     provider = find_provider(user, 'google_oauth2')
 
     create do |m|
-      m.from = mail.from.first.to_s.force_encoding("ASCII-8BIT").encode('UTF-8', undef: :replace, replace: '')
-      m.subject = mail.subject.to_s.force_encoding("ASCII-8BIT").encode('UTF-8', undef: :replace, replace: '')
-      m.body = mail.text_part.body.to_s.force_encoding("ASCII-8BIT").encode('UTF-8', undef: :replace, replace: '') if mail.text_part
-      m.received_at = mail.received.to_s.force_encoding("ASCII-8BIT").encode('UTF-8', undef: :replace, replace: '')
+      m.from = encode_mail(mail.from.first)
+      m.subject = encode_mail(mail.subject)
+      m.body = encode_mail(mail.text_part.body) if mail.text_part
+      m.received_at = encode_mail(mail.received)
       m.provider_id = provider.id
     end
   end
@@ -21,11 +21,12 @@ class Email < ActiveRecord::Base
     self.where(provider_id: provider.id)
   end
 
-  private
-
   def self.find_provider(user, provider)
     Provider.find_provider(user, provider)
   end
 
+  def self.encode_mail(field)
+    field.to_s.force_encoding("ASCII-8BIT").encode('UTF-8', undef: :replace, replace: '')
+  end
 
 end

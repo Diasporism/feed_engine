@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
-gem 'sqlite3'
 gem 'rspec-rails'
 gem 'rest-client'
 gem 'figaro'
@@ -20,6 +19,8 @@ gem 'resque', require: 'resque/server'
 gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'redis'
 gem 'kaminari'
+gem 'pg'
+
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -32,6 +33,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'newrelic_rpm'
+  gem 'sqlite3'
 end
 
 group :test do

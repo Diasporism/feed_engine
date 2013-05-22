@@ -11,13 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130520174146) do
+ActiveRecord::Schema.define(:version => 20130522003441) do
 
   create_table "emails", :force => true do |t|
     t.integer  "provider_id"
     t.string   "from"
     t.string   "subject"
-    t.string   "body"
+    t.text     "body"
     t.string   "uid"
     t.datetime "received_at"
   end
@@ -30,8 +30,9 @@ ActiveRecord::Schema.define(:version => 20130520174146) do
     t.string   "uid"
     t.string   "token"
     t.string   "secret"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "refresh_token"
   end
 
   add_index "providers", ["user_id"], :name => "index_providers_on_user_id"

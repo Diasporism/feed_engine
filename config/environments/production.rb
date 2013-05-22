@@ -1,5 +1,6 @@
 FeedEngine::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:d155a1f857701e27c9c19af89c2341b4@dory.redistogo.com:9812/'
 
   # Code is not reloaded between requests
   config.cache_classes = true

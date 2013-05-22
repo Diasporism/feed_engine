@@ -1,4 +1,5 @@
-require 'spec_helper'
+require 'date'
+require './app/models/feed'
 
 describe Feed do
   describe '.format_time' do

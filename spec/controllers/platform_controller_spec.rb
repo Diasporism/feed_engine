@@ -19,33 +19,12 @@ describe PlatformController do
 
   describe '#index' do
     context 'When the current user is logged in' do
-      context 'but has not added any providers to their feed' do
-        xit 'a gmail client is created' do
-          controller.auto_login(user_3)
-
-          get :index
-          response.response_code.should == 200
-        end
-      end
-
-      context 'and has added Twitter to their feed' do
-
-        before do 
-          Provider.stub(:get_email).and_return(true)
-        end
-
-        xit 'a Twitter client is created' do
-          controller.auto_login(user2)
-          get :index
-          response.response_code.should == 200
-        end
-      end
 
       context "a user has authorized both gmail and twitter" do
 
         # let!(:user) {User.create(email: "yolo@email.com")}
         # let!(:google_oauth) {FactoryGirl.create(:provider, user: user)}
-        # let!(:mail_1) { FactoryGirl.create(:mail, provider: provider)} 
+        # let!(:mail_1) { FactoryGirl.create(:mail, provider: provider)}
         # let!(:mail_2) { FactoryGirl.create(:mail, provider: provider)}
 
         before do 
