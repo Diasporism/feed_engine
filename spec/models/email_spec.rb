@@ -4,6 +4,11 @@ describe Email do
 
   let!(:mail) { Email.create(from: "example", subject: "ahoy", body: "hoy", received_at: "Sat May 18 20:02:13 +0000 2013", uid: "07846")}
 
+"22-May-2013 09:00 +0000"
+"Sat May 18 20:02:13 +0000 2013"
+
+
+
   describe ".from" do 
 
     context "given an email has from attribute" do 

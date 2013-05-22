@@ -25,7 +25,7 @@ class Platform
   private
 
   def emails
-    email_provider(self.user).emails.all
+    email_provider(user).emails.all
   end
 
   def tweets
