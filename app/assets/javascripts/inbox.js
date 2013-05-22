@@ -30,4 +30,8 @@ $(document).ready(function(){
     $(this).prev().toggle();        //morecontent toggle
     return false;
   });
+
+  if($('td.twitter').text()) {
+    $('.twitter-login').hide();
+  }
 });

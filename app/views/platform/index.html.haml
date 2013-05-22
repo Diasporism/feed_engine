@@ -4,13 +4,7 @@
 .row-fluid
   .span12
     .span1
-      %table.side_menu
-        %tr
-          %td All
-        %tr
-          %td Gmail
-        %tr
-          %td Twitter
+
 
     -if @timeline
       .span10
@@ -36,7 +30,7 @@
                         = auto_link(message.body, :html => { :target => '_blank' })
               - else
                 %tr
-                  %td
+                  %td.twitter
                     .image.span1
                       = image_tag message.profile_image_url
                     .sender.text-left.span3
