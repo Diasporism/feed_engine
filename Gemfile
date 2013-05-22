@@ -32,6 +32,7 @@ group :development do
   gem 'unicorn'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'newrelic_rpm'
   gem 'sqlite3'
 end
 
