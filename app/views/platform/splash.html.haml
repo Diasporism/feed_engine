@@ -12,8 +12,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     = yield(:head)
-  %body
-    = link_to "Sign in with Google", "/auth/google_oauth2"
-    .splash-img
-      = image_tag 'onewall2.jpg'
+  %body.splash
+    = link_to image_tag('Google-login-button.png'), "/auth/google_oauth2"
+
 

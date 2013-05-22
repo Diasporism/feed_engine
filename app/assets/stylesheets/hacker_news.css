@@ -10,7 +10,6 @@ table[Attributes Style] {
   border-left-width: 0px;
   border-spacing: 0px;
   width: 85%;
-  background-color: rgb(246, 246, 239);
 }
 table {
   white-space: normal;
@@ -26,7 +25,6 @@ table {
   border-spacing: 2px;
   border-color: gray;
   font-family: Verdana;
-  background-color: rgb(246, 246, 239);
 }
 
 tr {
@@ -44,13 +42,16 @@ tr.header {
 td {
   font-family: Verdana;
   font-size: 10pt;
-  color: #828282;
+  color: #fff;
+  background-color: rgba(199, 195, 195, 0.5);
+
 }
 
 td, th {
   display: table-cell;
   vertical-align: inherit;
   border: 1px solid white;
+  border-radius: 2px;
 }
 
 element.style {
@@ -58,20 +59,18 @@ element.style {
   padding-right: 4px;
 }
 
-table.side_menu {
-  float: left;
-  margin: 10px;
-  border-collapse: separate;
-  border-spacing: 2px;
-  border: 2px solid gray;
-  line-height: 15px;
-  padding: 5px;
+.image {
+  margin-top: 7px;
+  margin-left: 15px;
+}
+
+td.hover {
+  background-color: rgba(199, 195, 100, 0.5);
 }
 
 table.main {
-  float: left;
-  margin: 10px;
-
+  horizontal-align: middle;
+  margin-top: 30px;
 }
 
 h2 {
@@ -85,8 +84,20 @@ h2 {
   word-wrap: break-word;
   width: 675px;
   max-width: 85%;
+  background-color: rgba(0, 0, 0, .7);
+  border-radius: 5px;
 }
 
 .sender {
   font-weight: bold;
+  text-shadow:
+   -1px -1px 0 #000,
+    1px -1px 0 #000,
+   -1px 1px 0 #000,
+    1px 1px 0 #000;
+}
+
+body.splash {
+  float: right;
+  margin-right: 10px;
 }

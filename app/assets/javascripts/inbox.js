@@ -26,7 +26,7 @@ $(document).ready(function(){
       $(this).addClass("less");
       $(this).html(lesstext);
     }
-    $(this).prev().prev().toggle();            //elipse toggle
+    $(this).prev().prev().toggle(); //elipse toggle
     $(this).prev().toggle();        //morecontent toggle
     return false;
   });
