@@ -59,6 +59,16 @@ element.style {
   padding-right: 4px;
 }
 
+.image {
+  margin-top: 7px;
+  margin-left: 15px;
+}
+
+td.hover {
+  background-color: rgba(199, 195, 100, 0.5);
+
+}
+
 table.side_menu {
   float: left;
   margin: 10px;
@@ -98,4 +108,9 @@ h2 {
     1px -1px 0 #000,
    -1px 1px 0 #000,
     1px 1px 0 #000;
+}
+
+body.splash {
+  float: right;
+  margin-right: 10px;
 }
