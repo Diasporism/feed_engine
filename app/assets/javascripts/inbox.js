@@ -26,8 +26,8 @@ $(document).ready(function(){
       $(this).addClass("less");
       $(this).html(lesstext);
     }
-    $(this).prev().prev().slideToggle();            //elipse toggle
-    $(this).prev().slideToggle('slow');        //morecontent toggle
+    $(this).prev().prev().toggle();            //elipse toggle
+    $(this).prev().toggle();        //morecontent toggle
     return false;
   });
 });

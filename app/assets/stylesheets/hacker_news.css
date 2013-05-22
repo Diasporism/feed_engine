@@ -83,7 +83,8 @@ h2 {
 
 .body {
   word-wrap: break-word;
-  width: 85%;
+  width: 675px;
+  max-width: 85%;
 }
 
 .sender {
