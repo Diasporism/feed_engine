@@ -4,13 +4,6 @@
 .row-fluid
   .span12
     .span1
-      %table.side_menu
-        %tr
-          %td All
-        %tr
-          %td Gmail
-        %tr
-          %td Twitter
 
     -if @timeline
       .span10
@@ -22,8 +15,8 @@
               - if message.kind_of?(Email)
                 %tr
                   %td
-                    .span1
-                      = image_tag 'http://placehold.it/48/48'
+                    .image.span1
+                      = image_tag 'gmail.png'
                     .sender.text-left.span3
                       = message.from
                     .span5
@@ -37,7 +30,7 @@
               - else
                 %tr
                   %td
-                    .span1
+                    .image.span1
                       = image_tag message.profile_image_url
                     .sender.text-left.span3
                       = "@#{message.screen_name}"

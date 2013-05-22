@@ -1,6 +1,4 @@
 !!!
-
-
 %html
   %head
     %meta{:charset => "utf-8"}
@@ -13,7 +11,11 @@
     = csrf_meta_tags
     = yield(:head)
   %body
-    = link_to "Sign in with Google", "/auth/google_oauth2"
-    .splash-img
-      = image_tag 'onewall2.jpg'
-
+    .splash-title
+      = image_tag 'onewall.gif'
+    .splash-message
+      %h3 Your feeds are so ugly they're cute!
+    .splash-title
+      = image_tag 'ugly_dog.jpeg'
+    .sign-in-button
+      = link_to image_tag('Google-login-button.png'), "/auth/google_oauth2"
