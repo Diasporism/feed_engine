@@ -56,4 +56,6 @@ class Provider < ActiveRecord::Base
     access_token = json['access_token']
     provider.update_attribute(:token, access_token)
   end
+=======
+>>>>>>> 5be430e63d96d141c9b6a93dc9c6e26173b9c17c
 end
