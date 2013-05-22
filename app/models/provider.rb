@@ -1,6 +1,6 @@
 class Provider < ActiveRecord::Base
 
-  attr_accessible :name, :uid, :token, :secret, :user
+  attr_accessible :name, :uid, :token, :secret, :user, :refresh_token
 
   belongs_to :user
   has_many :tweets
@@ -20,14 +20,13 @@ class Provider < ActiveRecord::Base
   end
 
   def self.get_email(imap, user)
-
-    #delete all of users existing emails from the database
     provider = Provider.find_provider(user.id, 'google_oauth2')
     delete_emails(provider)
 
+    refresh_access_token(provider)
+
     imap.authenticate('XOAUTH2', user.email, user.token('google_oauth2'))
     imap.select('INBOX')
-
 
     imap.search(['ALL']).each do |message_id|
     #imap.search(["NOT", "SEEN"]).each do |message_id|
@@ -47,4 +46,12 @@ class Provider < ActiveRecord::Base
     provider.emails.destroy_all
   end
 
+  def self.refresh_access_token(provider)
+    hash = {'client_id' => ENV['GOOGLE_CLIENT_ID'], 'client_secret' => ENV['GOOGLE_CLIENT_SECRET'],
+            'refresh_token' => provider.refresh_token, 'grant_type' => 'refresh_token'}
+    response = RestClient.post 'https://accounts.google.com/o/oauth2/token', hash
+    json = JSON.parse(response)
+    access_token = json['access_token']
+    provider.update_attribute(:token, access_token)
+  end
 end

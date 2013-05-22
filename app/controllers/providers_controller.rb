@@ -5,7 +5,8 @@ class ProvidersController < ApplicationController
     current_user.providers.create(name: auth['provider'],
                                   uid: auth['uid'],
                                   secret: auth['credentials']['secret'],
-                                  token: auth['credentials']['token'])
+                                  token: auth['credentials']['token'],
+                                  refresh_token: auth['credentials']['refresh_token'])
     session[:auth] = nil
     redirect_to root_path
   end
