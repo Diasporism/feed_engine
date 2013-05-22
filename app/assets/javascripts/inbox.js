@@ -4,7 +4,7 @@ $(document).ready(function(){
   var moretext = "more";
   var lesstext = "less";
   $('.message').each(function() {
-    var content = $(this).html();
+    var content = $(this).text();
 
     if(content.length > showChar) {
 
