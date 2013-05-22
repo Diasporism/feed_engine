@@ -1,9 +1,9 @@
-
 .row-fluid.top-bar
   .span3
     %h2.navigation OneWall
   - if current_user
     .text-left.span4.twitter-login
-      = link_to image_tag('twitter_login.png'), '/auth/twitter'
+      -unless current_user.providers.size > 1
+        = link_to image_tag('twitter_login.png'), '/auth/twitter'
     .text-right.span5.signout
       = link_to "Sign out", signout_path
