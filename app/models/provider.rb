@@ -1,3 +1,5 @@
+require 'date'
+
 class Provider < ActiveRecord::Base
 
   attr_accessible :name, :uid, :token, :secret, :user
@@ -21,16 +23,18 @@ class Provider < ActiveRecord::Base
 
   def self.get_email(imap, user)
 
-    #delete all of users existing emails from the database
+    # last_date = Email.last.received_at
+    start_time = Net::IMAP.format_datetime(DateTime.strptime("09:00", "%H:%M"))
+    raise start_time.class
+
     provider = Provider.find_provider(user.id, 'google_oauth2')
     delete_emails(provider)
 
     imap.authenticate('XOAUTH2', user.email, user.token('google_oauth2'))
-    imap.select('INBOX')
+    imap.examine('INBOX')
 
-
-    imap.search(['ALL']).each do |message_id|
-    #imap.search(["NOT", "SEEN"]).each do |message_id|
+    imap.search("SINCE", start_time).each do |message_id|
+    # imap.search(['ALL']).each do |message_id|
       msg = imap.fetch(message_id,'RFC822')[0].attr['RFC822']
       mail = Mail.read_from_string(msg)
       Email.save_email(mail, user)
