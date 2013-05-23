@@ -18,7 +18,7 @@
                     .image.span1
                       = image_tag 'gmail.png'
                     .sender.text-left.span3
-                      = message.from
+                      = auto_link(message.from, :html => { :target => '_blank' })
                     .span5
                     .text-right.span3
                       = Feed.format_time(message.received_at)
